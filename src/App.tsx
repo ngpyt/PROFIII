@@ -11,12 +11,13 @@ import { AuthProvider } from "./components/auth/AuthProvider";
 import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import CareerSelection from "./components/career/CareerSelection";
 import JobsPage from "./components/jobs/JobsPage";
+import ExcursionsPage from "./components/excursions/ExcursionsPage";
 
 function App() {
   return (
     <AuthProvider>
       <Suspense fallback={<p>Loading...</p>}>
-        <>
+        <div>
           <BackgroundAnimation />
           <Navbar />
 
@@ -62,9 +63,17 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/excursions"
+              element={
+                <ProtectedRoute>
+                  <ExcursionsPage />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
           {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
-        </>
+        </div>
       </Suspense>
     </AuthProvider>
   );

@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const formSchema = z.object({
   title: z.string().min(2, "Введите название вакансии"),
@@ -33,7 +35,7 @@ const JobPostForm = () => {
     },
   });
 
-  const [currentTag, setCurrentTag] = React.useState("");
+  const [currentTag, setCurrentTag] = useState("");
   const tags = form.watch("tags");
 
   const addTag = () => {

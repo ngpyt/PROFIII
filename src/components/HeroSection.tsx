@@ -29,11 +29,10 @@ const HeroSection = () => {
     <div className="min-h-[80vh] flex items-center justify-center py-20 px-4 relative overflow-hidden">
       <div className="container mx-auto text-center max-w-3xl">
         <h1 className="text-6xl font-extrabold tracking-tight lg:text-7xl mb-6">
-          Кто я?
+          Найди своё я
         </h1>
         <p className="text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Найди свое призвание с помощью искусственного интеллекта, узнай в чём
-          твоя сила
+          Пройди данные тесты и узнай кто ты
         </p>
         <div className="flex flex-col items-center gap-4">
           <Button

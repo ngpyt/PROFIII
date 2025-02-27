@@ -60,6 +60,11 @@ const Navbar = () => {
                 Карьерный план
               </Link>
             </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/excursions" className="text-sm font-medium">
+                Экскурсии
+              </Link>
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
