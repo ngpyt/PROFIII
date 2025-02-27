@@ -12,6 +12,7 @@ import { ProtectedRoute } from "./components/auth/ProtectedRoute";
 import CareerSelection from "./components/career/CareerSelection";
 import JobsPage from "./components/jobs/JobsPage";
 import ExcursionsPage from "./components/excursions/ExcursionsPage";
+import EmployerProfile from "./components/employer/EmployerProfile";
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ExcursionsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/employer-profile"
+              element={
+                <ProtectedRoute>
+                  <EmployerProfile />
                 </ProtectedRoute>
               }
             />

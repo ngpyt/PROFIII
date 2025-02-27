@@ -17,10 +17,12 @@ import {
 import { useState } from "react";
 import { useAuth } from "./auth/AuthProvider";
 import { AuthModal } from "./auth/AuthModal";
+import { EmployerAuthModal } from "./auth/EmployerAuthModal";
 
 const Navbar = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const { user, signOut } = useAuth();
+  const [showEmployerAuthModal, setShowEmployerAuthModal] = useState(false);
+  const { user, signOut, isEmployer } = useAuth();
   return (
     <div className="border-b border-gray-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -87,8 +89,10 @@ const Navbar = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <Link to="/profile">
-                  <DropdownMenuItem>Профиль</DropdownMenuItem>
+                <Link to={isEmployer ? "/employer-profile" : "/profile"}>
+                  <DropdownMenuItem>
+                    {isEmployer ? "Профиль компании" : "Профиль"}
+                  </DropdownMenuItem>
                 </Link>
                 <Link to="/career-roadmap">
                   <DropdownMenuItem>Карьерный план</DropdownMenuItem>
@@ -100,11 +104,23 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={() => setShowAuthModal(true)}>Войти</Button>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setShowEmployerAuthModal(true)}
+              >
+                Для работодателей
+              </Button>
+              <Button onClick={() => setShowAuthModal(true)}>Войти</Button>
+            </div>
           )}
           <AuthModal
             isOpen={showAuthModal}
             onClose={() => setShowAuthModal(false)}
+          />
+          <EmployerAuthModal
+            isOpen={showEmployerAuthModal}
+            onClose={() => setShowEmployerAuthModal(false)}
           />
         </div>
       </div>
